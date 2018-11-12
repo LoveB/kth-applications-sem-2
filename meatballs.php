@@ -130,8 +130,9 @@
                 </div>
             </div>
         </div>
-
         <!-- Comment section -->
+        <!--
+
         <div class="container">
             <h2>Please leave a comment!</h2>
             <form action="/action_page.php">
@@ -155,7 +156,7 @@
                 </div>
             </div>
         </div>
-
+        -->
         <!-- Footer -->
         <footer class="footer">
 

@@ -131,9 +131,12 @@
 </div>
 
     <!-- Comment section -->
+
+<?php echo $_SESSION['page'] ?>
+
     <div class="container">
         <h2>Please leave a comment!</h2>
-        <form action="/action_page.php">
+        <form action="comments.php">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" placeholder="Your name..">
             <label for="subject">Comment</label>
