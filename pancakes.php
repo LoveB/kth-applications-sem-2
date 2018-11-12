@@ -132,33 +132,57 @@
 
     <!-- Comment section -->
 
-<?php echo $_SESSION['page'] ?>
-
     <div class="container">
         <h2>Please leave a comment!</h2>
-        <form action="comments.php">
+        <form action="comments.php" method="post">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" placeholder="Your name..">
             <label for="subject">Comment</label>
             <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
             <input type="submit" value="Submit">
         </form>
+
+
+
+
         <div class="comment-area">
             <h3>COMMENTS (2)</h3>
             <div class="comment">
-                <h4>Nancy J. McFarland</h4>
-                <p class="date-time">10 Okt 2018 14:11 PM</p>
-                <p>Nice recipe! I really liked it, very tasty. </p>
+                <?php
+                    session_start();
+                    require_once 'Entry.php';
+                    require_once 'keys.php';
+
+                    $filename = 'comments-db.txt';
+
+                    $date = date_create();
+
+                    $entries = explode(";\n", file_get_contents($filename));
+                    for ($i = count($entries) - 1; $i >= 0; $i--) {
+                        $entry = unserialize($entries[$i]);
+                        if ($entry instanceof Entry and ! $entry->isDeleted()) {
+                            echo ("<h4 class='author'>" . $entry->getCommenterName() . ":</h4>");
+                            echo("<p class='date-time'>");
+                            echo(nl2br($entry->getFormattedDate()));
+                            echo ("</p>");
+                            echo("<p >");
+                            echo(nl2br($entry->getMsg()));
+                            echo ("</p>");
+                            if (isset($_SESSION[USERNAME])) {
+                                echo("<form action='delete-comment.php'>");
+                                echo("<input type='hidden' name='timestamp' value='" .
+                                    $entry->getTimestamp() . "'/>");
+                                echo("<input type='submit' value='Delete'/>");
+                                echo("</form>");
+                            }
+                        }
+                    }
+                    ?>
+
             </div>
-            <div class="comment">
-                <h4>Walter Brooks</h4>
-                <p class="date-time">8 Okt 2018 09:34 AM</p>
-                <p>Didnt like the taste of these and it was a bit of a pain to cook them... </p>
-            </div>
-        </div>
     </div>
 
-
+    </div>
 <!-- Footer -->
 <footer class="footer">
 
