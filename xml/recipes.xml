@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cookbook version="46">
+
+    <recipe>
+    <title>Pancakes</title>
+    <cooktime>1 hour</cooktime>
+    <cost>Cheap</cost>
+    <servings>4</servings>
+    <ingredient>
+        <li>1 cup all-purpose flour</li>
+        <li>2 tablespoons white sugar</li>
+        <li>1 teaspoon salt</li>
+        <li>1 egg, beaten</li>
+        <li>1 cup milk</li>
+        <li>2 tablespoons vegetable oil</li>
+        <li>2 bananas</li>
+        <li>3 tablespoons maple syrup</li>
+    </ingredient>
+    <instruction>
+        <li>In a large bowl, mix flour, sugar, baking powder and salt. Make a well in the center, and pour in milk, egg and oil. Mix until smooth.</li>
+        <li>Heat a lightly oiled griddle or frying pan over medium high heat. Pour or scoop the batter onto the griddle, using approximately 1/4 cup for each pancake. Brown on both sides and serve hot.</li>
+        <li>Add bananas and maple syrup</li>
+    </instruction>
+  <imagepath></imagepath>
+    <imageurl>http://www.recipeurl/original_image</imageurl>
+    </recipe>
+    
+    <recipe>
+    <title>Pancakes</title>
+    <cooktime>1 hour</cooktime>
+    <cost>Cheap</cost>
+    <servings>4</servings>
+    <ingredient>
+        <li>1 cup all-purpose flour</li>
+        <li>2 tablespoons white sugar</li>
+        <li>1 teaspoon salt</li>
+        <li>1 egg, beaten</li>
+        <li>1 cup milk</li>
+        <li>2 tablespoons vegetable oil</li>
+        <li>2 bananas</li>
+        <li>3 tablespoons maple syrup</li>
+    </ingredient>
+    <instruction>
+        <li>In a large bowl, mix flour, sugar, baking powder and salt. Make a well in the center, and pour in milk, egg and oil. Mix until smooth.</li>
+        <li>Heat a lightly oiled griddle or frying pan over medium high heat. Pour or scoop the batter onto the griddle, using approximately 1/4 cup for each pancake. Brown on both sides and serve hot.</li>
+        <li>Add bananas and maple syrup</li>
+    </instruction>
+        <imagepath></imagepath>
+    <imageurl>http://www.recipeurl/original_image</imageurl>
+   
+    </recipe>
+
+</cookbook>

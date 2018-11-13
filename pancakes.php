@@ -48,6 +48,7 @@
 
 <body>
 
+
 <!-- Navigation -->
 <nav class="topnav recipe-nav">
     <a id="logo" href="index.php" class="flaticon-fork"></a>
@@ -145,7 +146,7 @@
         </form>
 
 
-        <div class="comment-area">
+        <div id="comments-anchor" class="comment-area">
             <h3>COMMENTS (2)</h3>
             <div class="comment">
                 <?php
