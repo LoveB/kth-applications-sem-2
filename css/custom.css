@@ -369,10 +369,8 @@ header {
     height: 9em;
     background-color: darkslategray;
 
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    position: relative;
+
 }
 
 .text-box-footer {
@@ -681,7 +679,7 @@ input[type=submit]:hover {
 
 .comment-area {
     margin-top: 3em;
-    height: 20em;
+    height: 100%;
 }
 
 .comment-area h3 {
@@ -699,6 +697,19 @@ input[type=submit]:hover {
     padding-bottom: 1.2em;
     padding-top: 0.1em;
     margin-bottom: 1em;
+}
+
+.comment-divider {
+    height: 0.1em;
+    color: lightgray;
+    background: lightgray;
+    border:none;
+
+}
+#delete-button{
+    width: 6em;
+    height: 2em;
+    padding: 0.4em;
 }
 
 .date-time {

@@ -135,14 +135,14 @@
     <div class="container">
         <h2>Please leave a comment!</h2>
         <form action="comments.php" method="post">
+            <!--
             <label for="name">Name</label>
             <input type="text" id="name" name="name" placeholder="Your name..">
+            -->
             <label for="subject">Comment</label>
             <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
             <input type="submit" value="Submit">
         </form>
-
-
 
 
         <div class="comment-area">
@@ -154,10 +154,8 @@
                     require_once 'keys.php';
 
                     $filename = 'comments-db.txt';
-
-                    $date = date_create();
-
                     $entries = explode(";\n", file_get_contents($filename));
+
                     for ($i = count($entries) - 1; $i >= 0; $i--) {
                         $entry = unserialize($entries[$i]);
                         if ($entry instanceof Entry and ! $entry->isDeleted()) {
@@ -168,13 +166,14 @@
                             echo("<p >");
                             echo(nl2br($entry->getMsg()));
                             echo ("</p>");
-                            if (isset($_SESSION[USERNAME])) {
+                            if ($entry->getCommenterName() === $_SESSION[USERNAME]) {
                                 echo("<form action='delete-comment.php'>");
                                 echo("<input type='hidden' name='timestamp' value='" .
                                     $entry->getTimestamp() . "'/>");
-                                echo("<input type='submit' value='Delete'/>");
+                                echo("<input id='delete-button' type='submit' value='Delete'/>");
                                 echo("</form>");
                             }
+                            echo("<hr class='comment-divider'>");
                         }
                     }
                     ?>
@@ -183,7 +182,9 @@
     </div>
 
     </div>
+
 <!-- Footer -->
+
 <footer class="footer">
 
     <div class="text-box-footer">
