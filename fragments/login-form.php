@@ -1,10 +1,10 @@
-<div class="register-area">
-<form action="db-handler.php" method="post" class="register-form">
+<div class="login-area">
+<form action="login.php" method="post" class="login-form">
     <input id="login-text" type="text" name="username" placeholder="Username..." required>
     <input id="login-password" type="password" name="password" placeholder="Password..." required>
     <div class="login-reg">
-        <input id="login-submit" type="submit" value="Register">
-        <a id="register" href="index.php">Log in</a>
+    <input id="login-submit" type="submit" value="Log in">
+    <a id="register" href="register.php">Register</a>
     </div>
 </form>
 </div>

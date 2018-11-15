@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cookbook version="46">
+
+    <recipe>
+    <title>Pancakes</title>
+    <cooktime>1 hour</cooktime>
+    <cost>Cheap</cost>
+    <servings>4</servings>
+    <ingredient>
+        <li>1 cup all-purpose flour</li>
+        <li>2 tablespoons white sugar</li>
+        <li>1 teaspoon salt</li>
+        <li>1 egg, beaten</li>
+        <li>1 cup milk</li>
+        <li>2 tablespoons vegetable oil</li>
+        <li>2 bananas</li>
+        <li>3 tablespoons maple syrup</li>
+    </ingredient>
+    <instruction>
+        <li>In a large bowl, mix flour, sugar, baking powder and salt. Make a well in the center, and pour in milk, egg and oil. Mix until smooth.</li>
+        <li>Heat a lightly oiled griddle or frying pan over medium high heat. Pour or scoop the batter onto the griddle, using approximately 1/4 cup for each pancake. Brown on both sides and serve hot.</li>
+        <li>Add bananas and maple syrup</li>
+    </instruction>
+  <imagepath></imagepath>
+    <imageurl>https://pinchofyum.com/wp-content/uploads/2013/10/pancakes2.jpg</imageurl>
+    </recipe>
+    
+    <recipe>
+    <title>Vegetarian Meatballs</title>
+    <cooktime>1,5 hour</cooktime>
+    <cost>Cheap</cost>
+    <servings>4</servings>
+    <ingredient>
+        <li>3 cups cauliflower florets (roughly 1 head of cauliflower)</li>
+        <li>3 cups cooked quinoa and/or brown rice (see notes)</li>
+        <li>3/4 cups of a “dry ingredient” like oat flour, almond meal, breadcrumbs, etc.</li>
+        <li>4 eggs</li>
+        <li>1 heaping tablespoon spices (chili powder, paprika, and/or cumin will work)</li>
+        <li>2 teaspoons salt</li>
+        <li>enough olive oil to cover the bottom of a frying pan with a thin coating</li>
+        <li>Some parsley to sprinkle over the pot</li>
+    </ingredient>
+    <instruction>
+        <li>Cauliflower: Cook the cauliflower florets in a pot of boiling water for about 5 minutes, till fork-tender. Drain well.</li>
+        <li>Mix: Pulse the quinoa and cauliflower through a food processor until semi-smooth (see pictures for texture). Transfer mixture to a large mixing bowl and combine with all other ingredients. Stir until everything is incorporated. Roll into small balls (about one heaping tablespoon per ball was best for me).</li>
+        <li>Cook: Heat a thin layer of olive oil in a skillet over medium heat – add the balls and cook for a few minutes on each side – they will need to be gently turned every so often to get browned all the way around. Serve with yummy sauces, salads, bowls, or freeze for later!</li>
+    </instruction>
+        <imagepath></imagepath>
+    <imageurl>https://pinchofyum.com/wp-content/uploads/Cauliflower-Meatballs-2.jpg</imageurl>
+   
+    </recipe>
+
+</cookbook>

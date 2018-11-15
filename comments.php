@@ -1,29 +1,26 @@
 <?php
 
-session_start();
+require_once 'keys.php';
+require_once 'Entry.php';
 
+session_start();
 $page = $_SESSION['page'];
+//$page = $current_page;
+
+    $filename = $_SESSION['comment-database'];
 
     // Check if username and password is set
-    if (isset($_POST['name']) && isset($_POST['subject'])) {
-
-        if(isset($_POST['username'])){
-            $_SESSION['commenter-name'] = $_POST['name'];
-            $_SESSION['comment'] = $_POST['subject'];
-            echo $_SESSION['commenter-name'];
-            echo $_SESSION['comment'];
-            include($page);
-        } else {
-            echo "Not logged in";
-            include($page);
-        }
-
-    }else {
-
+    if (!isset($_POST[COMMENT_ENTRY])) {
+       // echo "Fill in all text areas";
         include($page);
-        echo $_POST['name'];
-        echo $_POST['subject'];
-        $_POST['username'];
+    } else if(!isset($_SESSION[USERNAME])) {
+        //echo "Not logged in";
+        include($page);
+    } else {
+
+        $entry = new Entry($_SESSION[USERNAME], $_POST[COMMENT_ENTRY]);
+        file_put_contents($filename, serialize($entry) . COMMENT_ENTRY_DELIMITER, FILE_APPEND);
+        include($page);
     }
 
 

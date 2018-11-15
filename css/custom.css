@@ -1,4 +1,7 @@
-
+html {
+    position:relative;
+    min-height: 100%;
+}
 body {
     height: 100%;
     width: 100%;
@@ -88,11 +91,55 @@ li {
     float: right;
 }
 
+.login-reg{
+    display: inline-block;
+}
+
 .register-area {
     background-color: #DFF1E6;
     padding: 0.3em;
     padding-left: 2em;
-    float: right;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15%;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.register-area h2 {
+    margin-bottom: 1em;
+}
+
+#register-submit{
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+
+#register-password, #register-text{
+    width:80%;
+    padding:1em;
+    border:none;
+    box-sizing: content-box;
+}
+
+#register {
+    font-family: 'Lora', serif;
+    color: darkslategray;
+    text-decoration: underline;
+
+}
+
+#register:hover {
+    color: #DFF1E6;
+}
+
+.confirmation-area {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15%;
+    text-align: center;
 }
 
 .login-form, #login-text, #login-password, #login-submit {
@@ -108,18 +155,6 @@ li {
     background-color: white;
 }
 
-.register-form, #login-text, #login-password, #login-submit {
-    display: inline-block;
-}
-
-.register-form #login-text, #login-password {
-    width: 6em;
-    padding: 0.5em;
-    margin-top: -3em;
-    margin-bottom: 1em;
-    border: none;
-    background-color: white;
-}
 
 #login-submit, #logout-submit{
     width: 6em;
@@ -141,11 +176,9 @@ li {
     text-align: right;
 }
 
-.login-reg {
-    display: inline-block;
+.topnav #register:hover {
+    color: white;
 }
-
-
 
 /* NAVIGATION BAR */
 
@@ -165,7 +198,7 @@ li {
     color: darkslategray;
 }
 
-.topnav a:hover {
+.topnav .links:hover {
     background-color: white;
 }
 
@@ -178,14 +211,14 @@ li {
 
     margin-right: 1.5em;
     padding-top:1.5em;
-    padding-bottom: 1.6em;
+    padding-bottom: 2em;
 }
 
 .index-nav {
     background-color: white;
 }
 
-.index-nav a:hover {
+.index-nav .links:hover {
     background-color: #DFF1E6;
 }
 
@@ -361,10 +394,13 @@ header {
 /* FOOTER */
 
 .footer {
-    clear: both;
+
     width: 100%;
     height: 9em;
     background-color: darkslategray;
+
+    position: relative;
+
 }
 
 .text-box-footer {
@@ -372,6 +408,8 @@ header {
     margin-right: auto;
     padding-top:0.1em;
     width:8.5em;
+
+
 }
 
 footer h3 {
@@ -522,6 +560,7 @@ footer p {
 
 .recipe-cont h3 {
     font-size: 1.5em;
+    margin-bottom: 1em;
 }
 
 .left-content ol {
@@ -531,7 +570,6 @@ footer p {
     line-height: 1.3;
     font-size: .9em;
 }
-
 
 #front-image-recipe {
     width: 95%;
@@ -671,7 +709,7 @@ input[type=submit]:hover {
 
 .comment-area {
     margin-top: 3em;
-    height: 20em;
+    height: 100%;
 }
 
 .comment-area h3 {
@@ -689,6 +727,19 @@ input[type=submit]:hover {
     padding-bottom: 1.2em;
     padding-top: 0.1em;
     margin-bottom: 1em;
+}
+
+.comment-divider {
+    height: 0.1em;
+    color: lightgray;
+    background: lightgray;
+    border:none;
+
+}
+#delete-button{
+    width: 6em;
+    height: 2em;
+    padding: 0.4em;
 }
 
 .date-time {
