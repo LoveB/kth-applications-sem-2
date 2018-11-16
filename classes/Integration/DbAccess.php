@@ -7,5 +7,5 @@ namespace Integration;
  */
 class DbAccess {
     const USER = 'root';
-    const PASS = 'dbpass';
+    const PASS = 'root';
 }

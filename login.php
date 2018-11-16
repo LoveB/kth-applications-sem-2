@@ -1,5 +1,9 @@
 <?php
 
+require_once 'keys.php';
+require_once 'classes/Model/User.php';
+
+use Model\User;
 
 session_start();
 
@@ -11,34 +15,26 @@ if(!empty($_POST)){
     // Check if username and password is set
     if (isset($_POST['username']) && isset($_POST['password'])) {
 
-        $myFile = "db.txt";
-        $fh = fopen($myFile, 'r');
-        $theData = fread($fh, filesize($myFile));
-        $assoc_array = array();
-        $my_array = explode("\n", $theData);
-        foreach($my_array as $line)
-        {
-            $tmp = explode(" ", $line);
-            $assoc_array[$tmp[0]] = $tmp[1];
-        }
-        fclose($fh);
-        // db as array
-        $users = $assoc_array;
+        $filename = 'usersDB.txt';
+        $users = explode(";\n", file_get_contents($filename));
+        for ($i = count($users) - 1; $i >= 0; $i--) {
+            $user = unserialize($users[$i]);
 
-        // Match username in database
-        foreach ($users as $user => $password) {
-            if ($_POST['username'] == $user) {
-                $current_user = $_POST['username'];
+            if ($user instanceof User and $_POST['username'] == $user->getName()) {
+                $current_user = $user;
+                $current_username = $_POST['username'];
+                $current_pass = $user->getPassword();
             }
         }
+
         // user is not in db
-        if ($current_user == NULL) {
+        if ($current_username == NULL) {
             $_SESSION['invalidUser'] = true;
             include($page);
         } else {
             // Check password
-            if (($users[$current_user] == $_POST['password'])) {
-                $_SESSION['username'] = $current_user;
+            if (($current_pass == $_POST['password'])) {
+                $_SESSION['username'] = $current_username;
                 include($page);
             } else {
                 // incorrect password

@@ -1,4 +1,4 @@
-<nav class="topnav recipe-nav">
+<nav class="topnav recipe-nav <?php if($_SESSION['page'] =='index.php'){echo 'index-nav';}?>">
     <a id="logo" href="index.php" class="flaticon-fork"></a>
 
     <?php include('login_handler.php'); ?>

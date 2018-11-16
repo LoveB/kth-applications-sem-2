@@ -1,6 +1,6 @@
 <?php
 
-namespace PersonRegister\Model;
+namespace Model;
 
 /**
  * Represents a person.
@@ -9,7 +9,6 @@ class User {
 
     private $name;
     private $password;
-    private $loggedIn = false;
 
     /**
      * Contructs a new person with the specified name, age and phone number.
@@ -17,7 +16,6 @@ class User {
     public function __construct($name, $password) {
         $this->name = $name;
         $this->password = $password;
-
     }
 
     /**
@@ -34,9 +32,5 @@ class User {
         return $this->password;
     }
 
-    public function logIn() {
-        $this->loggedIn = true;
-    }
-
-
 }
+

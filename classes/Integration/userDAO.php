@@ -1,22 +1,21 @@
 <?php
 
-namespace PersonRegister\Integration;
+namespace Integration;
 
 include __DIR__ . '/DbAccess.php';
-include __DIR__ . '/../../User.php';
+include __DIR__ . '/../Model/User.php';
 
-use PersonRegister\Model\Person;
+use Model\User;
 
 /**
  * Handles all SQL calls to the <code>persons</code> database.
  */
-class PersonDAO {
+class UserDAO {
 
-    const DB_NAME = 'persons';
-    const TABLE_NAME = 'person';
+    const DB_NAME = 'users';
+    const TABLE_NAME = 'user';
     const NAME_COL_NAME = 'name';
-    const AGE_COL_NAME = 'age';
-    const PHONE_COL_NAME = 'phone';
+    const PASS_COL_NAME = 'password';
 
     private $dropTableStmt;
     private $createTableStmt;
@@ -24,7 +23,7 @@ class PersonDAO {
     private $deleteStmt;
     private $updateStmt;
     private $selectStmt;
-    private $personDb;
+    private $usersDb;
 
     /**
      * Connetcs to the <code>persons</code> database and empties it.
@@ -33,29 +32,29 @@ class PersonDAO {
      */
     public function __construct() {
         mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-        $this->personDb = new \mysqli('localhost', DbAccess::USER, DbAccess::PASS, self::DB_NAME);
+        $this->usersDb = new \mysqli('localhost', DbAccess::USER, DbAccess::PASS, self::DB_NAME);
         $this->createTAbleStmts();
-        $this->deleteAllPersons();
+        $this->deleteAllUsers();
         $this->createContentStmts();
+
     }
 
     /**
      * Closes the connection to the <code>persons</code> database.
      */
     public function __destruct() {
-        $this->personDb->close();
+        $this->usersDb->close();
     }
 
     /**
      * Updates a person.
      *
      * @param type $name  The name of the person that is updated.
-     * @param type $age   The new age of the person.
-     * @param type $phone The new phone of the person.
+     * @param type $password   The new age of the person.
      * @throws \mysqli_sql_exception If unable to update.
      */
-    public function updatePerson($name, $age, $phone) {
-        $this->updateStmt->bind_param('iss', $age, $phone, $name);
+    public function updateUser($name, $password) {
+        $this->updateStmt->bind_param('ss', $name, $password);
         $this->updateStmt->execute();
     }
 
@@ -67,8 +66,8 @@ class PersonDAO {
      * @param type $phone The new phone of the person that is inserted.
      * @throws \mysqli_sql_exception If unable to insert.
      */
-    public function createPerson($name, $age, $phone) {
-        $this->insertStmt->bind_param('sis', $name, $age, $phone);
+    public function createUser($name, $password) {
+        $this->insertStmt->bind_param('ss', $name, $password);
         $this->insertStmt->execute();
     }
 
@@ -78,7 +77,7 @@ class PersonDAO {
      * @param type $name  The name of the person that is deleted.
      * @throws \mysqli_sql_exception If unable to delete.
      */
-    public function deletePersonByName($name) {
+    public function deleteUserByName($name) {
         $this->deleteStmt->bind_param('s', $name);
         $this->deleteStmt->execute();
     }
@@ -89,47 +88,51 @@ class PersonDAO {
      * @return array An array of <code>Person</code> objects with all persons in the register.
      * @throws \mysqli_sql_exception If unable to delete.
      */
-    public function getAllPersons() {
-        $persons = array();
+    public function getAllUsers() {
+        $users = array();
         $this->selectStmt->execute();
-        $this->selectStmt->bind_result($name, $age, $phone);
+        $this->selectStmt->bind_result($name, $password);
         while ($this->selectStmt->fetch()) {
-            $persons[] = new Person($name, $age, $phone);
+            $users[] = new User($name, $password);
+
         }
-        return $persons;
+        return $users;
     }
 
     /**
      * Deletes all persons.
      */
-    public function deleteAllPersons() {
-        $this->personDb->query($this->dropTableStmt);
-        $this->personDb->query($this->createTableStmt);
+    public function deleteAllUsers() {
+
+        $this->usersDb->query($this->dropTableStmt);
+        $this->usersDb->query($this->createTableStmt);
     }
 
     private function createTableStmts() {
+
         $this->dropTableStmt = "DROP TABLE IF EXISTS " . self::TABLE_NAME;
         $this->createTableStmt = "CREATE TABLE " . self::TABLE_NAME . " (" . self::NAME_COL_NAME .
-            " VARCHAR(100), " . self::AGE_COL_NAME . " INT(3), " .
-            self::PHONE_COL_NAME . " VARCHAR(12))";
+            " VARCHAR(40), " . self::PASS_COL_NAME . " VARCHAR(15)) ";
     }
 
     private function createContentStmts() {
+
         $this->dropTableStmt = "DROP TABLE IF EXISTS " . self::TABLE_NAME;
         $this->createTableStmt = "CREATE TABLE " . self::TABLE_NAME . " (" . self::NAME_COL_NAME .
-            " VARCHAR(100), " . self::AGE_COL_NAME . " INT(3), " .
-            self::PHONE_COL_NAME . " VARCHAR(12))";
-        $this->insertStmt = $this->personDb->prepare("INSERT INTO " . self::TABLE_NAME .
+            " VARCHAR(40), " . self::PASS_COL_NAME . " VARCHAR(15)) ";
+
+        $this->insertStmt = $this->usersDb->prepare("INSERT INTO " . self::TABLE_NAME .
             " (" . self::NAME_COL_NAME . ", " .
-            self::AGE_COL_NAME . ", " .
-            self::PHONE_COL_NAME . ") VALUES (?, ?, ?)");
-        $this->deleteStmt = $this->personDb->prepare("DELETE FROM " . self::TABLE_NAME . " WHERE " .
+            self::PASS_COL_NAME . ") VALUES (?, ?)");
+
+        $this->deleteStmt = $this->usersDb->prepare("DELETE FROM " . self::TABLE_NAME . " WHERE " .
             self::NAME_COL_NAME . " = ?");
-        $this->updateStmt = $this->personDb->prepare("UPDATE " . self::TABLE_NAME . " SET " .
-            self::AGE_COL_NAME . " = ?, " .
-            self::PHONE_COL_NAME . " = ? WHERE " .
+
+        $this->updateStmt = $this->usersDb->prepare("UPDATE " . self::TABLE_NAME . " SET " .
+            self::PASS_COL_NAME . " = ? WHERE " .
             self::NAME_COL_NAME . " = ?");
-        $this->selectStmt = $this->personDb->prepare("SELECT * FROM " . self::TABLE_NAME);
+
+        $this->selectStmt = $this->usersDb->prepare("SELECT * FROM " . self::TABLE_NAME);
     }
 
 }

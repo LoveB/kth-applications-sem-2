@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'Entry.php';
+require_once 'classes/Model/Entry.php';
 require_once 'keys.php';
 
 $page = $_SESSION['page'];

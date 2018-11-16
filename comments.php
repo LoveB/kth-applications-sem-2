@@ -1,7 +1,7 @@
 <?php
 
 require_once 'keys.php';
-require_once 'Entry.php';
+require_once 'classes/Model/Entry.php';
 
 session_start();
 $page = $_SESSION['page'];
