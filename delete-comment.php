@@ -5,7 +5,6 @@ require_once 'keys.php';
 use Model\Entry;
 
 $page = $_SESSION['page'];
-//$page = $current_page;
 $filename = $_SESSION['comment-database'];
 if (!empty($_GET['timestamp'])) {
     $entries = explode(";\n", file_get_contents($filename));

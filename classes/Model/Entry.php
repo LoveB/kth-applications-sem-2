@@ -4,7 +4,7 @@ namespace Model;
 /**
  *
  *
- * Holds one entry in the conversation.
+ * Holds one entry in the comment area.
  */
 class Entry {
     private $commenter_name;
@@ -21,13 +21,13 @@ class Entry {
         $this->deleted = false;
     }
     /**
-     * @return string The author's nick name.
+     * @return string The author's name.
      */
     public function getCommenterName() {
         return $this->commenter_name;
     }
     /**
-     * @return string The message.
+     * @return string The comment.
      */
     public function getMsg() {
         return $this->comment_entry;

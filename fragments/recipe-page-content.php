@@ -57,13 +57,14 @@ include('recipe-template.php');
 <div class="container">
     <h2>Please leave a comment!</h2>
     <form action="comments.php" method="post">
-        <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+        <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px" required></textarea>
+        <?php echo"<p class='alert'>" . $_SESSION['alert'] . "</p>"?>
+        <?php unset($_SESSION['alert']);?>
         <input type="submit" value="Submit">
     </form>
 
-
     <div id="comments-anchor" class="comment-area">
-        <h3>COMMENTS (2)</h3>
+        <h3>COMMENTS</h3>
         <div class="comment">
             <?php
             session_start();

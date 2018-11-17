@@ -3,7 +3,7 @@
 namespace Model;
 
 /**
- * Represents a person.
+ * Represents a user.
  */
 class User {
 
@@ -11,7 +11,7 @@ class User {
     private $password;
 
     /**
-     * Contructs a new person with the specified name, age and phone number.
+     * Contructs a new user with the specified name, age and phone number.
      */
     public function __construct($name, $password) {
         $this->name = $name;
@@ -19,14 +19,14 @@ class User {
     }
 
     /**
-     * @return string the person's name.
+     * @return string the user's name.
      */
     public function getName() {
         return $this->name;
     }
 
     /**
-     * @return integer the person's age.
+     * @return integer the user's password.
      */
     public function getPassword() {
         return $this->password;

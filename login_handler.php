@@ -1,6 +1,5 @@
 
 <?php
-
 session_start();
 
 if (isset($_SESSION['username'])) {
@@ -11,7 +10,6 @@ if (isset($_SESSION['username'])) {
     } else if(isset($_SESSION['invalidPass'])){
         include("fragments/login-form.php");
         unset($_SESSION["invalidPass"]);
-
     } else {
         include("fragments/login-form.php");
     }

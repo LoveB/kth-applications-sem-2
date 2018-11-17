@@ -6,5 +6,8 @@
     <input id="login-submit" type="submit" value="Log in">
     <a id="register" href="register.php">Register</a>
     </div>
+    <?php echo"<p class='alert'>" . $_SESSION['alert'] . "</p>"?>
+    <?php unset($_SESSION['alert']);?>
 </form>
 </div>
+

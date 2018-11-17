@@ -1,5 +1,4 @@
 <?php
-
    session_start();
    $page = $_SESSION['page'];
    unset($_SESSION["username"]);

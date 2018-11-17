@@ -55,6 +55,13 @@ hr {
     border:none;
 }
 
+.alert{
+    font-family: 'Lora', serif;
+    color: red;
+    font-size: 0.8em;
+    margin-top: -1em;
+}
+
 .thin-hr {
     height: 0.1em;
 }
@@ -69,6 +76,17 @@ li {
     color: darkslategray;
 }
 
+.top-link {
+    margin-top: 6em;
+}
+
+#login-mob {
+    display: block;
+    float:right;
+    margin-top: -6.4em;
+    width: 100%;
+}
+
 .text-box{
     margin:1em;
 }
@@ -79,6 +97,14 @@ li {
     padding: 0.3em;
     padding-left: 2em;
     float: right;
+    padding-bottom: 0.6em;
+}
+
+.navbar-small .login-area {
+    width:100%;
+}
+.navbar-small .logout-area {
+    width:100%;
 }
 
 .logout-area{
@@ -89,6 +115,10 @@ li {
     padding-bottom: 1.7em;
     padding-left: 2em;
     float: right;
+}
+
+#login-mob .login-form {
+    padding-left: 5%;
 }
 
 .login-reg{

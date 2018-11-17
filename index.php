@@ -6,9 +6,9 @@
     <body>
 
     <?php
+    require_once 'keys.php';
     session_start();
-    $_SESSION['page'] = 'index.php';
-    //$current_page = 'index.php';
+    $_SESSION[PAGE] = 'index.php';
     ?>
     <!-- Navigation -->
     <?php include('fragments/navigation.php'); ?>

@@ -5,9 +5,9 @@
 
     <body>
     <?php
+    require_once 'keys.php';
     session_start();
-    $_SESSION['page'] = 'meatballs.php';
-    //$current_page = 'meatballs.php';
+    $_SESSION[PAGE] = 'meatballs.php';
     ?>
         <!-- Navigation -->
         <?php include('fragments/navigation.php'); ?>

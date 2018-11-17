@@ -8,7 +8,7 @@ include __DIR__ . '/../Model/User.php';
 use Model\User;
 
 /**
- * Handles all SQL calls to the <code>persons</code> database.
+ * Handles all SQL calls to the <code>users</code> database.
  */
 class UserDAO {
 
@@ -26,20 +26,20 @@ class UserDAO {
     private $usersDb;
 
     /**
-     * Connetcs to the <code>persons</code> database and empties it.
+     * Connetcs to the <code>users</code> database.
      *
      * @throws \mysqli_sql_exception If unable to connect to the database or to empty it.
      */
     public function __construct() {
         mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
         $this->usersDb = new \mysqli('localhost', DbAccess::USER, DbAccess::PASS, self::DB_NAME);
-       // $this->createTableStmt();
+        //$this->createTableStmt();
         //$this->deleteAllUsers();
         $this->createContentStmts();
     }
 
     /**
-     * Closes the connection to the <code>persons</code> database.
+     * Closes the connection to the <code>users</code> database.
      */
     public function __destruct() {
         $this->usersDb->close();
@@ -48,8 +48,8 @@ class UserDAO {
     /**
      * Updates a person.
      *
-     * @param type $name  The name of the person that is updated.
-     * @param type $password   The new age of the person.
+     * @param type $name  The name of the user that is updated.
+     * @param type $password   The new password of the user.
      * @throws \mysqli_sql_exception If unable to update.
      */
     public function updateUser($name, $password) {
@@ -58,11 +58,10 @@ class UserDAO {
     }
 
     /**
-     * Creates a new person.
+     * Creates a new user.
      *
      * @param type $name  The name of the person that is inserted.
-     * @param type $age   The new age of the person that is inserted.
-     * @param type $phone The new phone of the person that is inserted.
+     * @param type $password   The password of the user that is inserted
      * @throws \mysqli_sql_exception If unable to insert.
      */
     public function createUser($name, $password) {
@@ -71,9 +70,9 @@ class UserDAO {
     }
 
     /**
-     * Deletes a person.
+     * Deletes a user.
      *
-     * @param type $name  The name of the person that is deleted.
+     * @param type $name  The name of the user that is deleted.
      * @throws \mysqli_sql_exception If unable to delete.
      */
     public function deleteUserByName($name) {
@@ -82,9 +81,9 @@ class UserDAO {
     }
 
     /**
-     * Lists all persons.
+     * Lists all users.
      *
-     * @return array An array of <code>Person</code> objects with all persons in the register.
+     * @return array An array of <code>User</code> objects with all persons in the register.
      * @throws \mysqli_sql_exception If unable to delete.
      */
     public function getAllUsers() {
@@ -99,7 +98,7 @@ class UserDAO {
     }
 
     /**
-     * Deletes all persons.
+     * Deletes all users.
      */
     public function deleteAllUsers() {
 

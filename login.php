@@ -7,21 +7,10 @@ require_once 'classes/Model/User.php';
 use Model\User;
 use Integration\userDAO;
 
-function connectUserDb() {
-    return new UserDAO();
-}
-
-function createUserDb(UserDAO $userDAO) {
-    $userDAO->createTableStmt();
-    $userDAO->deleteAllUsers();
-}
-
-$userDAO = connectUserDb();
+$userDAO = new UserDAO();
 
 session_start();
 $page = $_SESSION['page'];
-//$page = $current_page;
-
 
 if(!empty($_POST)){
     // Check if username and password is set
@@ -38,15 +27,18 @@ if(!empty($_POST)){
 
         // user is not in db
         if ($current_username == NULL) {
+            $_SESSION['alert'] = 'Please register';
             $_SESSION['invalidUser'] = true;
             include($page);
         } else {
             // Check password
             if (($current_pass == $_POST['password'])) {
+
                 $_SESSION['username'] = $current_username;
                 include($page);
             } else {
                 // incorrect password
+                $_SESSION['alert'] = 'Wrong password';
                 $_SESSION['invalidPass'] = true;
                 include($page);
             }

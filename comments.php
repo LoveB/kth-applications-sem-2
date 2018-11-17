@@ -4,17 +4,14 @@ require_once 'classes/Model/Entry.php';
 use Model\Entry;
 
 session_start();
-$page = $_SESSION['page'];
-//$page = $current_page;
+$page = $_SESSION[PAGE];
 $filename = $_SESSION['comment-database'];
-// Check if username and password is set
-if (!isset($_POST[COMMENT_ENTRY])) {
-    // echo "Fill in all text areas";
+// Check if username is set
+if(!isset($_SESSION[USERNAME])) {
+    $_SESSION['alert'] = "Not logged in";
     include($page);
-} else if(!isset($_SESSION[USERNAME])) {
-    //echo "Not logged in";
-    include($page);
-} else {
+    // store entry in db
+}  else {
     $entry = new Entry($_SESSION[USERNAME], $_POST[COMMENT_ENTRY]);
     file_put_contents($filename, serialize($entry) . COMMENT_ENTRY_DELIMITER, FILE_APPEND);
     include($page);

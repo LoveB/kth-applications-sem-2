@@ -11,8 +11,11 @@
 <!-- Small screen navigation-->
 <nav class="navbar-small">
     <a href="index.php" class="active flaticon-fork"></a>
+
     <div id="myLinks">
-        <a id="<?php if($_SESSION['page'] =='calendar.php'){echo 'active-link-mobile';}?>" href="calendar.php">CALENDAR</a>
+        <div id="login-mob"> <?php include('login_handler.php'); ?></div>
+
+        <a class="top-link" id="<?php if($_SESSION['page'] =='calendar.php'){echo 'active-link-mobile';}?>" href="calendar.php">CALENDAR</a>
         <a id="<?php if($_SESSION['page'] =='pancakes.php'){echo 'active-link-mobile';}?>" href="pancakes.php">PANCAKES</a>
         <a id="<?php if($_SESSION['page'] =='meatballs.php'){echo 'active-link-mobile';}?>" href="meatballs.php">VEGETARIAN MEATBALLS</a>
     </div>

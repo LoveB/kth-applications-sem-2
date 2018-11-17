@@ -75,6 +75,11 @@
 
 /* SMALL SCREENS */
 @media only screen and (max-width: 480px) {
+
+    .register-area{
+        width: 100%;
+    }
+
     hr {
         height: 0.1em;
     }
