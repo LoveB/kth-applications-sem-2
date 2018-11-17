@@ -33,10 +33,9 @@ class UserDAO {
     public function __construct() {
         mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
         $this->usersDb = new \mysqli('localhost', DbAccess::USER, DbAccess::PASS, self::DB_NAME);
-        $this->createTAbleStmts();
-        $this->deleteAllUsers();
+       // $this->createTableStmt();
+        //$this->deleteAllUsers();
         $this->createContentStmts();
-
     }
 
     /**
@@ -108,7 +107,7 @@ class UserDAO {
         $this->usersDb->query($this->createTableStmt);
     }
 
-    private function createTableStmts() {
+    public function createTableStmt() {
 
         $this->dropTableStmt = "DROP TABLE IF EXISTS " . self::TABLE_NAME;
         $this->createTableStmt = "CREATE TABLE " . self::TABLE_NAME . " (" . self::NAME_COL_NAME .
@@ -117,9 +116,9 @@ class UserDAO {
 
     private function createContentStmts() {
 
-        $this->dropTableStmt = "DROP TABLE IF EXISTS " . self::TABLE_NAME;
-        $this->createTableStmt = "CREATE TABLE " . self::TABLE_NAME . " (" . self::NAME_COL_NAME .
-            " VARCHAR(40), " . self::PASS_COL_NAME . " VARCHAR(15)) ";
+//        $this->dropTableStmt = "DROP TABLE IF EXISTS " . self::TABLE_NAME;
+//        $this->createTableStmt = "CREATE TABLE " . self::TABLE_NAME . " (" . self::NAME_COL_NAME .
+//            " VARCHAR(40), " . self::PASS_COL_NAME . " VARCHAR(15)) ";
 
         $this->insertStmt = $this->usersDb->prepare("INSERT INTO " . self::TABLE_NAME .
             " (" . self::NAME_COL_NAME . ", " .
@@ -134,5 +133,7 @@ class UserDAO {
 
         $this->selectStmt = $this->usersDb->prepare("SELECT * FROM " . self::TABLE_NAME);
     }
+
+
 
 }

@@ -1,25 +1,36 @@
+
 <?php
-require_once 'keys.php';
-require_once 'classes/Model/User.php';
 
+include 'classes/Integration/userDAO.php';
 
-use Model\User;
+use Integration\userDAO;
 
-session_start();
-$page = $_SESSION['page'];
-$filename = 'usersDB.txt';
+function connectUserDb() {
+    return new UserDAO();
+}
 
+function createUserDb(UserDAO $userDAO) {
+    $userDAO->createTableStmt();
+    $userDAO->deleteAllUsers();
+}
+
+$userDAO = connectUserDb();
 
 if(!empty($_POST)){
-    // Check if username and password is set
-    if (isset($_POST['username']) && isset($_POST['password'])) {
-
-        $user = new User($_POST[USERNAME], $_POST[PASSWORD]);
-        file_put_contents($filename, serialize($user) . COMMENT_ENTRY_DELIMITER, FILE_APPEND);
-
-        include('register-confirmation.php');
-    }
+// Check if username and password is set
+if (isset($_POST['username']) && isset($_POST['password'])) {
+$userDAO->createUser($_POST['username'],$_POST['password']);
+    include('register-confirmation.php');
 }
+}
+
+$userDAO->__destruct();
+
+
+
+
+
+
 
 
 

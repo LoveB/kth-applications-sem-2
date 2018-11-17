@@ -67,14 +67,17 @@ include('recipe-template.php');
         <div class="comment">
             <?php
             session_start();
-            require_once 'Entry.php';
+
+            require_once 'classes/Model/Entry.php';
             require_once 'keys.php';
+
+            use Model\Entry;
 
             $filename = $_SESSION['comment-database'];
             $entries = explode(";\n", file_get_contents($filename));
-
             for ($i = count($entries) - 1; $i >= 0; $i--) {
                 $entry = unserialize($entries[$i]);
+
                 if ($entry instanceof Entry and ! $entry->isDeleted()) {
                     echo ("<h4 class='author'>" . $entry->getCommenterName() . ":</h4>");
                     echo("<p class='date-time'>");
